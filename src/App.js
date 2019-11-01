@@ -1,26 +1,54 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component} from 'react';
 import './App.css';
+import {Button, Card, Image, Icon, Divider} from 'semantic-ui-react'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+
+const IconUsers = () => <Icon disabled name='users' />
+const DividerExampleDivider = () => <Divider />
+const IconLeftQuote = () => <Icon disabled name='quote left' />
+const IconRightQuote = () => <Icon disabled name='quote right'/>
+const IconUser = () => <Icon disabled name='user circle outline'/>
+
+
+
+const GITHUB_USER_INFO = "http://api.github.com/users/korenenyles";
+
+class App extends Component{
+  state= {
+    user:{},
+    active: false
+  };
+
+handleToggle=(event)=>{
+  console.log("button clicked");
+  if (this.state.active === true){
+    this.setState({ active: false })
+  } else {
+  fetch(GITHUB_USER_INFO)
+  .then(res => res.json())
+  .then(user => {
+    this.setState({user, active: true});
+  })}
+
+};
+
+render(){
+  return(
+  <React.Fragment>
+  <Button className="ui button" onClick={this.handleToggle}>Toggle</Button>
+  {this.state.active === true && (
+  <div>
+    <Card><Image src = {this.state.user.avatar_url} alt="avatar" />
+    <p className ="username"><IconUser/> {this.state.user.name}</p>
+    <p className="bio"><IconLeftQuote/> {this.state.user.bio} <IconRightQuote/></p>
+    <DividerExampleDivider/>
+    <p className="followers"><IconUsers/>{this.state.user.followers} Followers</p></Card>
+  </div>
+  )}
+  </React.Fragment>
+  )
+}
 }
 
 export default App;

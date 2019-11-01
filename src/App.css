@@ -20,3 +20,27 @@
 .App-link {
   color: #09d3ac;
 }
+
+button.ui.button{
+  margin: 20px;
+}
+
+div.ui.card{
+  margin: 20px;
+} 
+
+
+p.bio {
+  margin: 20px;
+}
+
+p.followers{
+  margin: 10px 20px 10px 20px;
+  color: grey;
+}
+
+p.username{
+  margin: 5px;
+  font-weight: bold;
+}
+

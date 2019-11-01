@@ -11,7 +11,7 @@ const IconUser = () => <Icon disabled name='user circle outline'/>
 
 
 
-const GITHUB_USER_INFO = "http://api.github.com/users/korenenyles";
+const GITHUB_USER_INFO = "https://api.github.com/users/korenenyles";
 
 class App extends Component{
   state= {

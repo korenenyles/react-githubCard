@@ -5,7 +5,6 @@ import {Button, Card, Image, Icon, Divider} from 'semantic-ui-react'
 
 
 const IconUsers = () => <Icon disabled name='users' />
-const DividerExampleDivider = () => <Divider />
 const IconLeftQuote = () => <Icon disabled name='quote left' />
 const IconRightQuote = () => <Icon disabled name='quote right'/>
 const IconUser = () => <Icon disabled name='user circle outline'/>
@@ -42,7 +41,7 @@ render(){
     <Card><Image src = {this.state.user.avatar_url} alt="avatar" />
     <p className ="username"><IconUser/> {this.state.user.name}</p>
     <p className="bio"><IconLeftQuote/> {this.state.user.bio} <IconRightQuote/></p>
-    <DividerExampleDivider/>
+    <Divider/>
     <p className="followers"><IconUsers/>{this.state.user.followers} Followers</p></Card>
   </div>
   )}
